@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dersleri - ALFA YAZILIM</title>
+    <link rel="icon" href="../image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <style>
+        .lesson-container {
+            display: flex;
+            margin-top: 80px;
+            padding: 20px;
+            gap: 30px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lesson-content {
+            flex: 2;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .lesson-content h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .lesson-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .code-example h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .run-code-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+
+        .run-code-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .output-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 2px solid #e9ecef;
+        }
+
+        .CodeMirror {
+            height: 300px;
+            font-size: 15px;
+            border-radius: 8px;
+        }
+
+        .video-list {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        .video-list h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+        }
+
+        h2.section-title {
+            font-size: 1.8em;
+            color: #34495e;
+            margin: 30px 0 15px 0;
+        }
+
+        footer {
+            background: #007bff;
+            color: white;
+            padding: 50px 20px 20px 20px;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 2px;
+            background-color: #fff;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin: 12px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            margin-right: 15px;
+        }
+
+        .footer-social img {
+            width: 25px;
+            height: 25px;
+            transition: transform 0.3s;
+        }
+
+        .footer-social img:hover {
+            transform: scale(1.2);
+        }
+
+        .bottom-footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .bottom-footer p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        @media (max-width: 1024px) {
+            .lesson-container {
+                flex-direction: column;
+            }
+            
+            .video-list {
+                position: static;
+                height: auto;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="scrolled">
+        <div class="logo">
+            <a href="../index.html" class="logo"><h2>&nbsp;&nbsp;&nbsp;&nbsp;ALFA YAZILIM</h2></a>
+        </div>
+        <center>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Anasayfa</a></li>
+                    <li><a href="../hakkimda.html">Hakkımda</a></li>
+                    <li><a href="html.html">Html</a></li>
+                    <li><a href="css.html">Css</a></li>
+                    <li><a href="js.html">Javascript</a></li>
+                    <li><a href="../uygulamalar.html">Uygulamalar</a></li>
+                    <li><a href="../iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </center>
+        <ul class="social-icons">
+            <li><a href="#"><img src="../image/insta.png" alt="Instagram"></a></li>
+            <li><a href="#"><img src="../image/facebook.png" alt="Facebook"></a></li>
+            <li><a href="#"><img src="../image/twiter.png" alt="X"></a></li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="lesson-container">
+            <div class="lesson-content">
+                <h1>JavaScript Dersleri</h1>
+                <p>Modern web geliştirmenin vazgeçilmez dili JavaScript'i öğrenmeye başlayın. Bu derslerde temel kavramlardan ileri seviye konulara kadar her şeyi bulabilirsiniz.</p>
+
+                <div class="code-example">
+                    <h3>Örnek JavaScript Kodu:</h3>
+                    <textarea id="code">// Temel JavaScript Örneği</textarea>
+                </div>
+
+                <button class="run-code-btn">Kodu Çalıştır</button>
+
+                <div id="output" class="output-container"></div>
+
+                <h2 class="section-title">JavaScript Nedir?</h2>
+                <p>JavaScript, web sayfalarını interaktif hale getirmek için kullanılan dinamik bir programlama dilidir. Kullanıcı etkileşimleri, form doğrulaması, animasyonlar ve çok daha fazlasını JavaScript ile yapabilirsiniz.</p>
+            </div>
+
+            <div class="video-list">
+                <h2>Video Dersler</h2>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ALFA YAZILIM</h3>
+                <p>Sizlere kodlamada kolaylık sağlamak için buradayız</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Linkler</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Anasayfa</a></li>
+                    <li><a href="../hakkimda.html">Hakkımda</a></li>
+                    <li><a href="../uygulamalar.html">Uygulamalar</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p>Email: info@alfayazilim.com</p>
+                <p>Tel: +90 123 456 7890</p>
+                <div class="footer-social">
+                    <a href="#"><img src="../image/insta.png" alt="Instagram"></a>
+                    <a href="#"><img src="../image/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="../image/twiter.png" alt="X"></a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <p>&copy; 2024 ALFA YAZILIM - Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <script>
+        const codeEditor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: true,
+            mode: "javascript",
+            theme: "default",
+            lineWrapping: true
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Öğrenin</title>
+  <link rel="icon" href="../image/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+  <!-- CodeMirror CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+<!-- CodeMirror JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+<!-- CodeMirror Modülleri -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
+
+  <style>
+    .lesson-container {
+      display: flex;
+      margin-top: 80px;
+      padding: 20px;
+      gap: 30px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #ffffff;
+    }
+
+    .lesson-content {
+      flex: 2;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .lesson-content h1 {
+      font-size: 2.5em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .lesson-content h2 {
+      font-size: 1.8em;
+      color: #34495e;
+      margin: 30px 0 15px 0;
+    }
+
+    .lesson-content p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .lesson-content ul {
+      background: #f8f9fa;
+      padding: 20px 40px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .lesson-content ul li {
+      margin: 12px 0;
+      color: #444;
+      font-size: 1.1em;
+    }
+
+    .code-example {
+      background: #1e1e1e;
+      padding: 25px;
+      border-radius: 12px;
+      margin: 30px 0;
+      position: relative;
+    }
+
+    .code-example h3 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+
+    #editor-container {
+      margin: 30px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-list {
+      flex: 1;
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 15px;
+      position: sticky;
+      top: 100px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .video-list h2 {
+      font-size: 1.8em;
+      color: #2c3e50;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #007bff;
+    }
+
+    .video-item {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      border: 1px solid #eee;
+    }
+
+    .video-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-item h3 {
+      font-size: 1.2em;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .video-item p {
+      color: #666;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .video-item iframe {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      aspect-ratio: 16/9;
+    }
+
+    .run-code-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 20px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .run-code-btn:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .output-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      border: 2px solid #e9ecef;
+    }
+
+    .CodeMirror {
+      height: 300px;
+      font-size: 15px;
+      border-radius: 8px;
+    }
+
+    /* Scrollbar Styling */
+    .video-list::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .video-list::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    .video-list::-webkit-scrollbar-thumb {
+      background: #007bff;
+      border-radius: 4px;
+    }
+
+    .video-list::-webkit-scrollbar-thumb:hover {
+      background: #0056b3;
+    }
+
+    footer {
+        background: rgba(0, 123, 255, 0.95);
+        color: white;
+        padding: 50px 20px 20px 20px;
+        position: relative;
+        margin-top: 50px;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .footer-section {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 20px;
+    }
+
+    .footer-section h3 {
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+        position: relative;
+    }
+
+    .footer-section h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 50px;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-section p {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin: 12px 0;
+    }
+
+    .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-social {
+        margin-top: 20px;
+    }
+
+    .footer-social a {
+        margin-right: 15px;
+    }
+
+    .footer-social img {
+        width: 25px;
+        height: 25px;
+        transition: transform 0.3s;
+    }
+
+    .footer-social img:hover {
+        transform: scale(1.2);
+    }
+
+    .bottom-footer {
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 40px;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .bottom-footer p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    @media (max-width: 1024px) {
+      .lesson-container {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      .video-list {
+        position: static;
+        max-height: none;
+        margin-top: 30px;
+      }
+
+      .lesson-content {
+        padding: 20px;
+      }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 25px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 900px;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .close {
+      position: absolute;
+      right: 25px;
+      top: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #666;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 500px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="scrolled">
+    <div class="logo">
+      <a href="index.html" class="logo"><h2>&nbsp;&nbsp;&nbsp;&nbsp;ALFA YAZILIM</h2></a>
+    </div>
+    <center>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Anasayfa</a></li>
+          <li><a href="../hakkimda.html">Hakkımda</a></li>
+          <li><a href="html.html">Html</a></li>
+          <li><a href="css.html">Css</a></li>
+          <li><a href="js.html">Javascript</a></li>
+          <li><a href="../uygulamalar.html">Uygulamalar</a></li>
+          <li><a href="../iletisim.html">İletişim</a></li>
+        </ul>
+      </nav>
+    </center>
+    <ul class="social-icons">
+      <li><a href="#"><img src="../image/insta.png" alt="Instagram"></a></li>
+      <li><a href="#"><img src="../image/facebook.png" alt="Facebook"></a></li>
+      <li><a href="#"><img src="../image/twiter.png" alt="X"></a></li>
+    </ul>
+  </header>
+
+  <main>
+    <div class="lesson-container">
+      <div class="lesson-content">
+        <h1>HTML Dersleri</h1>
+        <p>Web geliştirmenin temel yapı taşı olan HTML'i öğrenmeye başlayın. Bu kapsamlı derste, modern web sayfaları oluşturmak için ihtiyacınız olan tüm HTML bilgilerini edineceksiniz.</p>
+        
+        <div class="code-example">
+          <h3>Örnek HTML Kodu:</h3>
+          <textarea id="code">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>İlk HTML Sayfam</title>
+</head>
+<body>
+    <h1>Merhaba Dünya!</h1>
+    <p>Bu benim ilk HTML sayfam.</p>
+</body>
+</html>
+          </textarea>
+        </div>
+
+        <button class="run-code-btn" id="run-code">
+          <i class="fas fa-play"></i> Kodu Çalıştır
+        </button>
+
+        <div id="output" class="output-container"></div>
+
+        <div id="editor-container"></div>
+        
+        <h2>HTML Nedir?</h2>
+        <p>HTML (Hypertext Markup Language), web sayfalarının yapısını oluşturmak için kullanılan standart işaretleme dilidir. Web tarayıcıları bu işaretlemeleri okuyarak içeriği kullanıcılara görsel olarak sunar.</p>
+        
+        <h2>Temel HTML Etiketleri</h2>
+        <ul>
+          <li>&lt;html&gt; - HTML belgesinin kök elementi</li>
+          <li>&lt;head&gt; - Belge başlığı ve meta bilgileri</li>
+          <li>&lt;body&gt; - Belgenin görünen kısmı</li>
+          <li>&lt;h1&gt; - &lt;h6&gt; - Başlıklar</li>
+          <li>&lt;p&gt; - Paragraf</li>
+          <li>&lt;div&gt; - Bölüm</li>
+          <li>&lt;span&gt; - Satır içi element</li>
+        </ul>
+      </div>
+
+      <div class="video-list">
+        <h2>Video Dersler</h2>
+        <div id="videoList"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <iframe id="modalVideo" frameborder="0" allowfullscreen></iframe>
+      <div id="codeExample" class="code-example"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>ALFA YAZILIM</h3>
+        <p>Sizlere kodlamada kolaylık sağlamak için buradayız</p>
+      </div>
+      <div class="footer-section">
+        <h3>Hızlı Linkler</h3>
+        <ul class="footer-links">
+          <li><a href="../index.html">Anasayfa</a></li>
+          <li><a href="../hakkimda.html">Hakkımda</a></li>
+          <li><a href="../uygulamalar.html">Uygulamalar</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>İletişim</h3>
+        <p>Email: info@alfayazilim.com</p>
+        <p>Tel: +90 123 456 7890</p>
+        <div class="footer-social">
+          <a href="#"><img src="../image/insta.png" alt="Instagram"></a>
+          <a href="#"><img src="../image/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="../image/twiter.png" alt="X"></a>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-footer">
+      <p>&copy; 2024 ALFA YAZILIM - Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+  
+  <script>
+    const videos = [
+      {
+        title: "Ders 1: HTML Nedir?",
+        description: "Bu derste HTML'in ne olduğunu ve web geliştirme dünyasında neden bu kadar önemli olduğunu öğreneceksiniz.",
+        url: "https://www.youtube.com/embed/PBZY480FO4g",
+        code: "<!-- HTML Nedir? -->\n<!DOCTYPE html>\n<html>\n<head>\n  <title>HTML Nedir?</title>\n</head>\n<body>\n  <h1>Merhaba, Dünya!</h1>\n</body>\n</html>"
+      },
+      {
+        title: "Ders 2: HTML Yorum Satırları Nasıl Kullanılır?",
+        description: "Bu derste HTML yorum satırlarının nasıl kullanıldığını ve kodunuzu nasıl daha okunabilir hale getirebileceğinizi göreceksiniz.",
+        url: "https://www.youtube.com/embed/B4Y6Fz4PdMU",
+        code: "<!-- Bu bir yorumdur -->\n<p>Bu paragraf görünür.</p>"
+      },
+      {
+        title: "Ders 3: HTML Başlıklar",
+        description: "Bu derste, HTML'de başlık etiketlerinin nasıl kullanıldığını ve bunların SEO üzerindeki etkilerini öğreneceksiniz.",
+        url: "https://www.youtube.com/embed/Q6rAkGEAX4E",
+        code: "<h1>Başlık 1</h1>\n<h2>Başlık 2</h2>\n<h3>Başlık 3</h3>"
+      },
+      {
+        title: "Ders 4: HTML Div ve Span Etiketleri",
+        description: "Bu derste, HTML'de div ve span etiketlerinin nasıl kullanıldığını ve farklarını öğreneceksiniz.",
+        url: "https://www.youtube.com/embed/XblkFNNVVY8",
+        code: "<div>\n  <span>Bu bir span etiketidir.</span>\n</div>"
+      },
+
+      {
+  title: "Ders 5: HTML Biçimler",
+  description: "Bu derste, HTML'de metin biçimlendirme etiketlerinin nasıl kullanıldığını öğreneceksiniz.",
+  url: "https://www.youtube.com/embed/w2UEAMdfjgQ",
+  code: "<p><strong>Bu kalın bir metin.</strong></p>\n<p><em>Bu italik bir metin.</em></p>"
+},
+{
+  title: "Ders 6: HTML Linkler",
+  description: "Bu derste, HTML'de linklerin nasıl oluşturulduğunu ve linklerle nasıl çalışıldığını öğreneceksiniz.",
+  url: "https://www.youtube.com/embed/1eHSEAjV_SQ",
+  code: "<a href='https://www.example.com'>Bu bir bağlantıdır</a>"
+},
+{
+  title: "Ders 7: HTML Resim ve Yerleşim",
+  description: "Bu derste, HTML'de resimlerin nasıl eklendiğini ve sayfa düzeninde nasıl yerleştirildiğini öğreneceksiniz.",
+  url: "https://www.youtube.com/embed/REsnWKmPNaU",
+  code: "<img src='image.jpg' alt='Açıklayıcı Metin' width='300'>"
+},
+{
+  title: "Ders 8: HTML İmg Etiketi",
+  description: "Bu derste, img etiketinin nasıl kullanıldığını ve resimlerle nasıl çalışıldığını öğreneceksiniz.",
+  url: "https://www.youtube.com/embed/v0NDRNmxOLw",
+  code: "<img src='image.jpg' alt='Örnek Resim'>"
+},
+{
+  title: "Ders 9: HTML Listeler",
+  description: "Bu derste, HTML'de listelerin nasıl oluşturulduğunu ve liste türlerini öğreneceksiniz.",
+  url: "https://www.youtube.com/embed/Bj_g15mdJhc",
+  code: "<ul>\n  <li>Öğe 1</li>\n  <li>Öğe 2</li>\n</ul>"
+},
+{
+  title: "Ders 9,5: Devam",
+  description: "Bu ders, HTML listeler konusunun devamıdır ve daha derinlemesine bilgi sağlar.",
+  url: "https://www.youtube.com/embed/eVVlVgYnnaY",
+  code: "<ol>\n  <li>Birinci</li>\n  <li>İkinci</li>\n</ol>"
+},
+{
+  title: "Ders 10: İç İçe Liste",
+  description: "Bu derste, HTML'de iç içe listelerin nasıl oluşturulduğunu ve stilize edildiğini öğreneceksiniz.",
+  url: "https://www.youtube.com/embed/GGlzMok_dzA",
+  code: "<ul>\n  <li>Birinci\n    <ul>\n      <li>Alt Öğeleri</li>\n    </ul>\n  </li>\n</ul>"
+}
+
+      
+    ];
+
+    const videoList = document.getElementById("videoList");
+    const modal = document.getElementById("videoModal");
+    const modalVideo = document.getElementById("modalVideo");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    const codeExample = document.getElementById("codeExample");
+
+    videos.forEach(video => {
+      const videoItem = document.createElement("div");
+      videoItem.classList.add("video-item");
+      
+      videoItem.innerHTML = `
+        <iframe src="${video.url}" frameborder="0" allowfullscreen></iframe>
+        <div class="video-description">
+          <h3>${video.title}</h3>
+          <p>${video.description}</p>
+        </div>
+      `;
+
+      videoItem.onclick = () => {
+        modal.style.display = "block";
+        modalVideo.src = video.url;
+        codeExample.textContent = video.code;
+      };
+
+      videoList.appendChild(videoItem);
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+      modalVideo.src = ""; // Videoyu durdurmak için
+    };
+
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        modalVideo.src = ""; // Videoyu durdurmak için
+      }
+    };
+
+    const codeEditor = CodeMirror.fromTextArea(document.getElementById("code"), {
+  lineNumbers: true,
+  mode: "htmlmixed", // HTML, CSS ve JS için karışık mod
+  theme: "default",
+  lineWrapping: true,
+});
+
+document.getElementById("run-code").addEventListener("click", () => {
+  const code = codeEditor.getValue();
+  const outputFrame = document.createElement("iframe");
+  document.getElementById("output").innerHTML = ""; // Önceki çıktıyı temizle
+  document.getElementById("output").appendChild(outputFrame);
+
+  const outputDoc = outputFrame.contentWindow.document;
+  outputDoc.open();
+  outputDoc.write(code);
+  outputDoc.close();
+});
+
+  </script>
+</body>
+</html>

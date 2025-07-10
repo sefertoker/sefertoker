@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - ALFA YAZILIM</title>
+    <link rel="icon" href="image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .contact-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 0;
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+        .ad-container {
+            position: relative;
+            width: 160px;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+            overflow: hidden;
+        }
+        .ad-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .ad-container:hover {
+            transform: translateY(-5px);
+        }
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+            margin-top: 5%;
+        }
+        .contact-box {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #007bff, #00e1ff);
+            transition: height 0.3s ease;
+        }
+        .contact-box:hover {
+            transform: translateY(-10px);
+        }
+        .contact-box:hover::before {
+            height: 10px;
+        }
+        .contact-box i {
+            font-size: 2em;
+            color: #007bff;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #007bff, #00e1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .contact-box h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .contact-box p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        .contact-form-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            position: relative;
+        }
+        .form-content {
+            padding: 35px;
+            padding-right: 10%;
+        }
+        .form-header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .form-header h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #007bff, #00e1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        .form-header p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            margin-right: 10%;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.1);
+            outline: none;
+        }
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #007bff, #00e1ff);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+        }
+        .form-image {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #007bff, #00e1ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+        .form-image:hover img {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 50px 0;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-container {
+                grid-template-columns: 1fr;
+            }
+            .form-content {
+                padding: 30px;
+            }
+            .form-header h2 {
+                font-size: 2em;
+            }
+            .contact-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="scrolled">
+        <div class="logo">
+          <a href="index.html" class="logo"><h2>    &nbsp;&nbsp;&nbsp;&nbsp;ALFA YAZILIM</h2></a>
+        </div>
+        <center>
+        <nav>
+          <ul>
+            <li><a href="index.html">Anasayfa</a></li>
+            <li><a href="hakkimda.html">Hakkımda</a></li>
+            <li><a href="dersler/html.html">Html</a></li>
+            <li><a href="dersler/css.html">Css</a></li>
+            <li><a href="dersler/js.html">Javascript</a></li>
+            <li><a href="uygulamalar.html">Uygulamalar</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+          </ul>
+        </nav></center>
+        <ul class="social-icons">
+          <li><a href="#"><img src="image/insta.png" alt="Instagram"></a></li>
+          <li><a href="#"><img src="image/facebook.png" alt="Facebook"></a></li>
+          <li><a href="#"><img src="image/twiter.png" alt="X"></a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <div class="page-wrapper">
+                <div class="ad-container">
+                    <iframe src="https://bionluk.com/creativesoft" frameborder="0" scrolling="no" title="Bionluk CreativeSoft"></iframe>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-form-container">
+                        <div class="form-content">
+                            <div class="form-header">
+                                <h2>Mesaj Gönder</h2>
+                                <p>Size en kısa sürede dönüş yapacağız</p>
+                            </div>
+                            <form>
+                                <div class="form-group">
+                                    <label>Ad Soyad</label>
+                                    <input type="text" required placeholder="Adınız ve soyadınız">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" required placeholder="Email adresiniz">
+                                </div>
+                                <div class="form-group">
+                                    <label>Konu</label>
+                                    <input type="text" required placeholder="Mesaj konusu">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mesajınız</label>
+                                    <textarea required placeholder="Mesajınızı buraya yazın..."></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Mesaj Gönder</button>
+                            </form>
+                        </div>
+                        <div class="form-image">
+                            <img src="image/iletisim.png" alt="İletişim">
+                        </div>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-box">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Adres</h3>
+                            <p>Sivas/MERKEZ Akdeğirmen Mahallesi 18/1. Sokak Numara 18 Daire 2</p>
+                        </div>
+                        <div class="contact-box">
+                            <i class="fas fa-phone"></i>
+                            <h3>Telefon</h3>
+                            <p>+90 123 456 7890</p>
+                        </div>
+                        <div class="contact-box">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>info@alfayazilim.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ad-container">
+                    <iframe src="https://bionluk.com/creativesoft" frameborder="0" scrolling="no" title="Bionluk CreativeSoft"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ALFA YAZILIM</h3>
+                <p>Sizlere kodlamada kolaylık sağlamak için buradayız</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Linkler</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="hakkimda.html">Hakkımda</a></li>
+                    <li><a href="uygulamalar.html">Uygulamalar</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p>Email: info@alfayazilim.com</p>
+                <p>Tel: +90 123 456 7890</p>
+                <div class="footer-social">
+                    <a href="#"><img src="image/insta.png" alt="Instagram"></a>
+                    <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="image/twiter.png" alt="X"></a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <p>&copy; 2024 ALFA YAZILIM - Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Canlı Destek</h2>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Mesajlar buraya gelecek -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Mesajınızı yazın...">
+            <button onclick="sendMessage()">Gönder</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>

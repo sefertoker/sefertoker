@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakkımda - ALFA YAZILIM</title>
+  <link rel="icon" href="image/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="chat.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .about-container {
+      max-width: 1200px;
+      margin: 120px auto 50px;
+      padding: 0 20px;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #007bff;
+    }
+
+    .about-header h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-header h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #007bff;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-section {
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      object-fit: cover;
+      border: 5px solid #007bff;
+    }
+
+    .profile-info h2 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .profile-info p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: #007bff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+    }
+
+    .social-links img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .info-section {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .info-block {
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .info-block:hover {
+      transform: translateY(-5px);
+    }
+
+    .info-block h3 {
+      color: #007bff;
+      margin-bottom: 15px;
+      font-size: 1.4em;
+    }
+
+    .info-block p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      background: #007bff;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-image {
+        width: 150px;
+        height: 150px;
+      }
+
+      .about-container {
+        margin-top: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="scrolled">
+    <div class="logo">
+      <a href="index.html" class="logo"><h2>    &nbsp;&nbsp;&nbsp;&nbsp;ALFA YAZILIM</h2></a>
+    </div>
+    <center>
+    <nav>
+      <ul>
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="hakkimda.html">Hakkımda</a></li>
+        <li><a href="dersler/html.html">Html</a></li>
+        <li><a href="dersler/css.html">Css</a></li>
+        <li><a href="dersler/js.html">Javascript</a></li>
+        <li><a href="uygulamalar.html">Uygulamalar</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav></center>
+    <ul class="social-icons">
+      <li><a href="#"><img src="image/insta.png" alt="Instagram"></a></li>
+      <li><a href="#"><img src="image/facebook.png" alt="Facebook"></a></li>
+      <li><a href="#"><img src="image/twiter.png" alt="X"></a></li>
+    </ul>
+  </header>
+  <main>
+    <div class="about-container">
+    
+      <div class="about-content">
+        <div class="profile-section">
+          <img src="image/my.jpeg" alt="Profil Fotoğrafı" class="profile-image">
+          <div class="profile-info">
+            <h2>Sefer Toker</h2>
+            <p>Web Geliştirici & Eğitmen</p>
+            <div class="social-links">
+              <a href="#"><img src="image/insta.png" alt="Instagram"></a>
+              <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+              <a href="#"><img src="image/twiter.png" alt="X"></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-block">
+            <h3>Kimim Ben?</h3>
+            <p>Merhaba! Ben Sefer Toker, 5 yıllık deneyime sahip bir web geliştiricisi ve eğitmenim. Yazılım dünyasına olan tutkum ve öğretme isteğim beni ALFA YAZILIM'ı kurmaya yönlendirdi.</p>
+            <p>Amacım, web teknolojilerini herkes için erişilebilir kılmak ve öğrencilerime en iyi eğitimi sunmaktır.</p>
+          </div>
+
+          <div class="info-block">
+            <h3>Uzmanlık Alanlarım</h3>
+            <div class="skills">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Php</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">C/C++</span>
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">Responsive Web Design</span>
+              <span class="skill-tag">Database</span>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <h3>Eğitim & Deneyim</h3>
+            <p>• Bilgisayar Mühendisliği Lisans Derecesi</p>
+            <p>• 5+ Yıl Web Geliştirme Deneyimi</p>
+            <p>• 100+ Başarılı Proje</p>
+            <p>• 1000+ Öğrenciye Eğitim</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>ALFA YAZILIM</h3>
+        <p>Sizlere kodlamada kolaylık sağlamak için buradayız</p>
+      </div>
+      <div class="footer-section">
+        <h3>Hızlı Linkler</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Anasayfa</a></li>
+          <li><a href="hakkimda.html">Hakkımda</a></li>
+          <li><a href="uygulamalar.html">Uygulamalar</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>İletişim</h3>
+        <p>Email: info@alfayazilim.com</p>
+        <p>Tel: +90 123 456 7890</p>
+        <div class="footer-social">
+          <a href="#"><img src="image/insta.png" alt="Instagram"></a>
+          <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="image/twiter.png" alt="X"></a>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-footer">
+      <p>&copy; 2024 ALFA YAZILIM - Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <div class="chat-container">
+    <div class="chat-header">
+        <i class="fas fa-comments"></i>
+        <h2>Canlı Destek</h2>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+        <!-- Mesajlar buraya gelecek -->
+    </div>
+    <div class="chat-input">
+        <input type="text" id="message-input" placeholder="Mesajınızı yazın...">
+        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <script src="chat.js"></script>
+</body>
+</html>

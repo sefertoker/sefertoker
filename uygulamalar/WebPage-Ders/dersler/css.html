@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Öğrenin</title>
+  <link rel="icon" href="../image/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+  <!-- CodeMirror CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+  <!-- CodeMirror JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+  <!-- CodeMirror Modülleri -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
+
+  <style>
+    .lesson-container {
+      display: flex;
+      margin-top: 80px;
+      padding: 20px;
+      gap: 30px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #ffffff;
+    }
+
+    .lesson-content {
+      flex: 2;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .lesson-content h1 {
+      font-size: 2.5em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .lesson-content h2 {
+      font-size: 1.8em;
+      color: #34495e;
+      margin: 30px 0 15px 0;
+    }
+
+    .lesson-content p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .lesson-content ul {
+      background: #f8f9fa;
+      padding: 20px 40px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .lesson-content ul li {
+      margin: 12px 0;
+      color: #444;
+      font-size: 1.1em;
+    }
+
+    .code-example {
+      background: #1e1e1e;
+      padding: 25px;
+      border-radius: 12px;
+      margin: 30px 0;
+      position: relative;
+    }
+
+    .code-example h3 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+
+    #editor-container {
+      margin: 30px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-list {
+      flex: 1;
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 15px;
+      position: sticky;
+      top: 100px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .video-list h2 {
+      font-size: 1.8em;
+      color: #2c3e50;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #007bff;
+    }
+
+    .video-item {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      border: 1px solid #eee;
+    }
+
+    .video-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-item h3 {
+      font-size: 1.2em;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .video-item p {
+      color: #666;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .video-item iframe {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      aspect-ratio: 16/9;
+    }
+
+    .run-code-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 20px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .run-code-btn:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .output-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      border: 2px solid #e9ecef;
+    }
+
+    .CodeMirror {
+      height: 300px;
+      font-size: 15px;
+      border-radius: 8px;
+    }
+
+    .video-list::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .video-list::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    .video-list::-webkit-scrollbar-thumb {
+      background: #007bff;
+      border-radius: 4px;
+    }
+
+    .video-list::-webkit-scrollbar-thumb:hover {
+      background: #0056b3;
+    }
+
+    @media (max-width: 1024px) {
+      .lesson-container {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      .video-list {
+        position: static;
+        max-height: none;
+        margin-top: 30px;
+      }
+
+      .lesson-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="scrolled">
+    <div class="logo">
+      <a href="../index.html" class="logo"><h2>&nbsp;&nbsp;&nbsp;&nbsp;ALFA YAZILIM</h2></a>
+    </div>
+    <center>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Anasayfa</a></li>
+          <li><a href="../hakkimda.html">Hakkımda</a></li>
+          <li><a href="html.html">Html</a></li>
+          <li><a href="css.html">Css</a></li>
+          <li><a href="js.html">Javascript</a></li>
+          <li><a href="../uygulamalar.html">Uygulamalar</a></li>
+          <li><a href="../iletisim.html">İletişim</a></li>
+        </ul>
+      </nav>
+    </center>
+    <ul class="social-icons">
+      <li><a href="#"><img src="../image/insta.png" alt="Instagram"></a></li>
+      <li><a href="#"><img src="../image/facebook.png" alt="Facebook"></a></li>
+      <li><a href="#"><img src="../image/twiter.png" alt="X"></a></li>
+    </ul>
+  </header>
+
+  <main>
+    <div class="lesson-container">
+      <div class="lesson-content">
+        <h1>CSS Dersleri</h1>
+        <p>Web sayfalarınıza stil ve tasarım katmak için CSS'i öğrenin. Bu kapsamlı derste, modern web tasarımının temellerini öğreneceksiniz.</p>
+        
+        <div class="code-example">
+          <h3>Örnek CSS Kodu:</h3>
+          <textarea id="code">
+/* Temel CSS Örneği */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+          </textarea>
+        </div>
+
+        <button class="run-code-btn" id="run-code">
+          <i class="fas fa-play"></i> Kodu Çalıştır
+        </button>
+
+        <div id="output" class="output-container"></div>
+
+        <h2>CSS Nedir?</h2>
+        <p>CSS (Cascading Style Sheets), web sayfalarının görünümünü ve düzenini kontrol etmek için kullanılan bir stil dilidir. HTML elementlerinin nasıl görüneceğini ve sayfa üzerinde nasıl konumlandırılacağını belirler.</p>
+        
+        <h2>Temel CSS Kavramları</h2>
+        <ul>
+          <li>Seçiciler ve Özellikler</li>
+          <li>Box Model</li>
+          <li>Flexbox ve Grid</li>
+          <li>Responsive Tasarım</li>
+          <li>Animasyonlar ve Geçişler</li>
+          <li>Medya Sorguları</li>
+          <li>Konumlandırma</li>
+          <li>Renk ve Tipografi</li>
+        </ul>
+      </div>
+
+      <div class="video-list">
+        <h2>Video Dersler</h2>
+        <div id="videoList"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>ALFA YAZILIM</h3>
+        <p>Sizlere kodlamada kolaylık sağlamak için buradayız</p>
+      </div>
+      <div class="footer-section">
+        <h3>Hızlı Linkler</h3>
+        <ul class="footer-links">
+          <li><a href="../index.html">Anasayfa</a></li>
+          <li><a href="../hakkimda.html">Hakkımda</a></li>
+          <li><a href="../uygulamalar.html">Uygulamalar</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>İletişim</h3>
+        <p>Email: info@alfayazilim.com</p>
+        <p>Tel: +90 123 456 7890</p>
+        <div class="footer-social">
+          <a href="#"><img src="../image/insta.png" alt="Instagram"></a>
+          <a href="#"><img src="../image/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="../image/twiter.png" alt="X"></a>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-footer">
+      <p>&copy; 2024 ALFA YAZILIM - Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script>
+    const videos = [
+      {
+        title: "Ders 1: CSS Giriş",
+        description: "Bu derste CSS'in temel kavramlarını ve web tasarımındaki önemini öğreneceksiniz.",
+        url: "https://www.youtube.com/embed/1eHSEAjV_SQ",
+        code: "body { background-color: #f0f0f0; }"
+      },
+      {
+        title: "Ders 2: CSS Seçiciler",
+        description: "CSS seçicilerini ve nasıl kullanıldıklarını detaylı öğrenin.",
+        url: "https://www.youtube.com/embed/1eHSEAjV_SQ",
+        code: ".class-name { color: blue; }"
+      },
+      {
+        title: "Ders 3: CSS Box Model",
+        description: "CSS Box Model'i ve sayfa düzenini öğrenin.",
+        url: "https://www.youtube.com/embed/1eHSEAjV_SQ",
+        code: ".box { margin: 10px; padding: 20px; border: 1px solid black; }"
+      },
+      {
+        title: "Ders 4: CSS Flexbox",
+        description: "Modern CSS layout sistemi Flexbox'ı detaylı öğrenin.",
+        url: "https://www.youtube.com/embed/1eHSEAjV_SQ",
+        code: ".flex-container { display: flex; justify-content: center; }"
+      },
+      {
+        title: "Ders 5: CSS Grid",
+        description: "CSS Grid ile gelişmiş sayfa düzenleri oluşturmayı öğrenin.",
+        url: "https://www.youtube.com/embed/1eHSEAjV_SQ",
+        code: ".grid-container { display: grid; grid-template-columns: 1fr 1fr; }"
+      },
+      {
+        title: "Ders 6: CSS Animasyonlar",
+        description: "CSS animasyonları ve geçiş efektlerini öğrenin.",
+        url: "https://www.youtube.com/embed/1eHSEAjV_SQ",
+        code: "@keyframes slide { from { left: 0; } to { left: 100px; } }"
+      }
+    ];
+
+    const videoList = document.getElementById("videoList");
+    videos.forEach(video => {
+      const videoItem = document.createElement("div");
+      videoItem.classList.add("video-item");
+      
+      videoItem.innerHTML = `
+        <iframe src="${video.url}" frameborder="0" allowfullscreen></iframe>
+        <h3>${video.title}</h3>
+        <p>${video.description}</p>
+        <div class="code-preview">
+          <pre><code>${video.code}</code></pre>
+        </div>
+      `;
+
+      videoList.appendChild(videoItem);
+    });
+
+    const codeEditor = CodeMirror.fromTextArea(document.getElementById("code"), {
+      lineNumbers: true,
+      mode: "css",
+      theme: "default",
+      lineWrapping: true
+    });
+
+    document.getElementById("run-code").addEventListener("click", () => {
+      const code = codeEditor.getValue();
+      const outputFrame = document.createElement("iframe");
+      document.getElementById("output").innerHTML = "";
+      document.getElementById("output").appendChild(outputFrame);
+
+      const outputDoc = outputFrame.contentWindow.document;
+      outputDoc.open();
+      outputDoc.write(`
+        <style>${code}</style>
+        <div class="container">
+          <button class="button">Örnek Buton</button>
+        </div>
+      `);
+      outputDoc.close();
+    });
+  </script>
+</body>
+</html>
