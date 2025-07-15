@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "Kisisel Uygulama Kiti": { categories: ["uygulama", "web", "api"], newTitle: "Personal App Kit", description: "Kişisel projeler için Rust backend ve Node.js araç kiti." },
     "Todo List": { categories: ["uygulama", "web"], newTitle: "Node Todo", description: "Node.js ile yapılmış basit yapılacaklar listesi." },
     "Pansion Kayit Uygulamasi": { categories: ["uygulama", "web", "masaustu", "api"], newTitle: "Pansion Registration System", description: "ASP.NET Core Web API ile hem masaüstü hem web pansiyon kayıt sistemi." },
-        "Envanter Kayit": { categories: ["uygulama", "web","masaustu"], newTitle: "Envanter Kayıt", description: "Hasatanede tekniker için envanter tutabilcek bir web uygulaması." },
+    "Envanter Kayit": { categories: ["uygulama", "web","masaustu"], newTitle: "Envanter Kayıt", description: "Hasatanede tekniker için envanter tutabilcek bir web uygulaması." },
     "Cspacegame": { categories: ["oyun", "console"], newTitle: "C Space Shooter", description: "C dilinde yazılmış retro uzay nişancı oyunu." },
     "C++ SpaceWars": { categories: ["oyun", "console"], newTitle: "C++ Space Wars", description: "C++ ile geliştirilmiş uzay savaşları oyunu." },
     "Cogrenci Kayit": { categories: ["uygulama", "console"], newTitle: "C Student Registry", description: "C dilinde öğrenci kayıt otomasyonu." },
